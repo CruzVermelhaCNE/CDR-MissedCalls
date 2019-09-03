@@ -15,11 +15,11 @@ class CDRController extends Controller
             "239825395",
             "239006911",
         ];
-        $unanswered_array = CDR::where('dcontext', '=', 'ext-queues')->whereIn('did', $dids)->whereNotIn('src',$dids)->where('disposition', '=', 'NO ANSWER')->orderBy('calldate', 'DESC')->get(['calldate','src','clid','duration','did'])->toArray();
+        $unanswered_array = CDR::where('dcontext', '=', 'ext-queues')->whereIn('did', $dids)->whereNotIn('src', $dids)->where('disposition', '=', 'NO ANSWER')->orderBy('calldate', 'DESC')->get(['calldate','src','clid','duration','did'])->toArray();
         $array = ["data" => []];
         foreach ($unanswered_array as $unanswered) {
-            if(CDR::where('dst','=',$unanswered["src"])->whereDate('calldate', '>', $unanswered['calldate'])->count() == 0) {
-                if (CDR::where('dcontext', '=', 'ext-queues')->where('src', $unanswered["src"])->where('disposition', '=', 'ANSWERED')->count() == 0) {
+            if (CDR::where('dst', '=', $unanswered["src"])->whereDate('calldate', '>', $unanswered['calldate'])->count() == 0) {
+                if (CDR::where('dcontext', '=', 'ext-queues')->where('src', $unanswered["src"])->where('disposition', '=', 'ANSWERED')->whereDate('calldate', '>', $unanswered['calldate'])->count() == 0) {
                     array_push($array["data"], $unanswered);
                 }
             }
