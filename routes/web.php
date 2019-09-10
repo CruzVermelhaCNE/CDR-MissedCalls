@@ -19,4 +19,11 @@ Route::group(array('domain' => 'chamadasperdidas.salop'), function () {
     });
 });
 
+Route::group(array('domain' => 'callbacks.salop'), function () {
+    Route::get('/', function () {
+        return view('missedcalls');
+    });
+});
+
 Route::get('missed_calls', 'CDRMissedCallsController@fetch');
+Route::get('callbacks', 'CDRMissedCallsController@fetch');
