@@ -29,7 +29,7 @@
 @section('javascript')
 <script>
     var table = $('#calls').DataTable( {
-        ajax: "/calls",
+        ajax: "/missed_calls",
         "columns": [
             { "data": "calldate" },
             { "data": "src" },
@@ -39,5 +39,8 @@
         ],
         "order": [[0, 'desc']]
     });
+    setInterval( function () {
+        table.ajax.reload( null, false );
+    }, 5000 );
 </script>
 @endsection
