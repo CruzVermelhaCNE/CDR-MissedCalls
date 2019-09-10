@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('missedcalls');
+
+
+Route::group(array('domain' => 'chamadasperdidas.salop'), function () {
+    Route::get('/', function () {
+        return view('missedcalls');
+    });
 });
 
-Route::get('calls', 'CDRController@fetch');
+Route::get('missed_calls', 'CDRMissedCallsController@fetch');

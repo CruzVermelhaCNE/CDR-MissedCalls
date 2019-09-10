@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\CDR;
 use Illuminate\Http\Request;
 
-class CDRController extends Controller
+class CDRMissedCallsController extends Controller
 {
     public function fetch()
     {
