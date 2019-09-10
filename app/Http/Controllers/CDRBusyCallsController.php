@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CDR;
 use Illuminate\Http\Request;
 
 class CDRBusyCallsController extends Controller
