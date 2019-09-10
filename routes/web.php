@@ -26,4 +26,4 @@ Route::group(array('domain' => 'callbacks.salop'), function () {
 });
 
 Route::get('missed_calls', 'CDRMissedCallsController@fetch');
-Route::get('callbacks', 'CDRMissedCallsController@fetch');
+Route::get('callbacks', 'CDRBusyCallsController@fetch');
