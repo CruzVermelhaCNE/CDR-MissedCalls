@@ -21,7 +21,7 @@ Route::group(array('domain' => 'chamadasperdidas.salop'), function () {
 
 Route::group(array('domain' => 'callbacks.salop'), function () {
     Route::get('/', function () {
-        return view('missedcalls');
+        return view('callbacks');
     });
 });
 
