@@ -19,7 +19,7 @@ class CDRMissedCallsController extends Controller
         $array = ["data" => []];
         foreach ($unanswered_array as $unanswered) {
             if (CDR::where('dst', '=', $unanswered["src"])->where('calldate', '>', $unanswered['calldate'])->count() == 0) {
-                if (CDR::where('dcontext', '=', 'ext-queues')->where('src', $unanswered["src"])->where('disposition', '=', 'ANSWERED')->where('calldate', '>', $unanswered['calldate'])->count() == 0) {
+                if (CDR::where('dcontext', '=', 'ext-queues')->where('src','LIKE', '%'.$unanswered["src"].'%')->where('disposition', '=', 'ANSWERED')->where('calldate', '>', $unanswered['calldate'])->count() == 0) {
                     array_push($array["data"], $unanswered);
                 }
             }
