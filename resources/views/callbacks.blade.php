@@ -29,7 +29,10 @@
 @section('javascript')
 <script>
     var table = $('#calls').DataTable( {
-        ajax: "/callbacks.json",
+        ajax: {
+            url: "/callbacks.json",
+            timeout: 60000
+        },
         "columns": [
             { "data": "calldate" },
             { "data": "src" },
@@ -41,6 +44,6 @@
     });
     setInterval( function () {
         table.ajax.reload( null, false );
-    }, 5000 );
+    }, 60000 );
 </script>
 @endsection
