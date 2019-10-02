@@ -29,7 +29,7 @@
 @section('javascript')
 <script>
     var table = $('#calls').DataTable( {
-        ajax: "/missed_calls",
+        ajax: "/missed_calls.json",
         "columns": [
             { "data": "calldate" },
             { "data": "src" },
